@@ -1,108 +1,110 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="utf-8">
-<title>Inicio de sesión</title>
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-	crossorigin="anonymous">
+    <meta charset="utf-8">
+    <title>Inicio de sesión</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+          crossorigin="anonymous">
 
-<!-- Optional theme -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
-	integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
-	crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+          crossorigin="anonymous">
+    
+    <style>
+        .custom-input {
+            width: 60%; /* Ajusta el tamaño del campo */
+            font-size: 14px; /* Tamaño de la letra */
+            font-family: 'Arial', sans-serif; /* Tipo de letra */
+            margin: 0 auto; /* Centra el campo dentro del contenedor */
+        }
+
+        .custom-label {
+            font-size: 20px; /* Tamaño de la letra para las etiquetas */
+            font-family: 'Arial', sans-serif; /* Tipo de letra para las etiquetas */
+            margin-bottom: 10px;
+            text-align: center; /* Alinea el texto a la izquierda */
+            display: block; /* Asegura que el texto esté en una línea separada */
+			margin-left: 200;
+        }
+
+        
+
+        .form-container {
+            margin-top: 30px;
+        }
+
+        .form-group .btn-submit-container {
+            text-align: center; /* Centra el contenido del contenedor */
+        }
+
+        .btn-primary {
+            padding: 8px 16px; /* Ajusta el tamaño del botón */
+            font-size: 14px; /* Tamaño de la letra */
+            width: auto; /* Ajusta el ancho automático para el botón */
+            display: block; /* Asegura que el botón esté en una línea separada */
+            margin: 0 auto; /* Centra el botón horizontalmente */
+        }
+        
+        .create-account {
+            text-align: center; /* Centra el texto */
+            display: block; /* Asegura que el texto esté en una línea separada */
+            margin-top: 20px; /* Ajusta el espacio superior si es necesario */
+        }
+
+        h1 {
+            margin-bottom: 40px; /* Ajusta el espacio debajo del título principal */
+        }
+    </style>
 </head>
 <body>
+    <br>
+    <br>
 
+    <div class="container form-container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <center>
+                    <h1>Inicio de sesión</h1>
+                </center>
+                <form th:action="@{/login}" method="post">
 
-	<nav class="navbar navbar-inverse navbar-fixed-top">
-		<div class="container">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle collapsed"
-					data-toggle="collapse" data-target="#navbar" aria-expanded="false"
-					aria-controls="navbar">
-					<span class="sr-only">Toggle navigation</span> <span
-						class="icon-bar"></span> <span class="icon-bar"></span> <span
-						class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="#" th:href="@{/}">Registro y
-					inicio de sesión</a>
-			</div>
-		</div>
-	</nav>
+                    <div th:if="${param.error}">
+                        <div class="alert alert-danger">Usuario o contraseña inválidos</div>
+                    </div>
 
-	<br>
-	<br>
+                    <div th:if="${param.logout}">
+                        <div class="alert alert-info">Ha cerrado sesión exitosamente</div>
+                    </div>
 
-	<div class="container">
-		<div class="row">
-			<div class="col-md-6 col-md-offset-3">
-				<h1>Inicio de sesión</h1>
-				<form th:action="@{/login}" method="post">
+                    <div class="form-group">
+                        <label class="custom-label" for="username">Email</label>
+                        <input id="username" name="username" type="text" class="form-control custom-input" required autofocus="autofocus" placeholder="Digite su email">
+                    </div>
 
-					<div th:if=${param.error}>
-						<div class="alert alert-danger">Usuario o contraseña
-							inválidos</div>
-					</div>
+                    <div class="form-group">
+                        <label class="custom-label" for="password">Password</label>
+                        <input id="password" type="password" name="password" class="form-control custom-input" required autofocus="autofocus" placeholder="Digite su password">
+                    </div>
 
-					<div th:if=${param.logout}>
-						<div class="alert alert-info">Ha cerrado sesión exitosamente
-						</div>
-					</div>
+                    <div class="form-group btn-submit-container">
+                        <input type="submit" class="form-control btn btn-primary" name="login-submit" id="login-submit" value="Iniciar sesión" />
+                    </div>
+                </form>
+                <div class="form-group">
+                    <span class="create-account">Todavía no tienes una cuenta? <a th:href="@{/registro}">Regístrate aquí</a></span>
+                </div>
+            </div>
+        </div>
+    </div>
 
-
-					<div class="form-group">
-						<label  for="username">Nombre de
-							usuario : </label> <input id="username"  name="username" type="text" class="form-control"
-							required autofocus="autofocus" placeholder="Digite su email ID">
-					</div>
-
-					<div class="form-group">
-						<label  for="password">Password : </label> <input
-							id="password" type="password"  name="password" class="form-control" required
-							autofocus="autofocus" placeholder="Digite su password">
-					</div>
-
-					<div class="form-group">
-						<div class="row">
-							<div class="col-md-6 col-md-offset-3">
-								<input type="submit" class="form-control btn btn-primary" name="login-submit" id="login-submit"
-									value="Iniciar sesión" />
-							</div>
-						</div>
-					</div>
-				</form>
-				<div class="form-group">
-					<span>Si eres nuevo usuario <a th:href="@{/registro}">regístrate
-							aqui</a></span>
-				</div>
-
-			</div>
-		</div>
-	</div>
-
-
-	<!-- Latest compiled and minified JavaScript -->
-	<script
-		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-		integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-		crossorigin="anonymous"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
