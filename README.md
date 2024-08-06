@@ -19,7 +19,7 @@ Login con un API REST hecho en java Spring Boot.
 aceptar los términos de licencia y luego clic en Finish.
 - Reiniciar eclipse.
 
-### Instalación Insomnia
+### Instalación Insomnia (opcional)
 - Descargar [Insomnia](https://insomnia.rest/download).
 - Importar archivo json de la carpeta clonada.
 
@@ -29,7 +29,7 @@ aceptar los términos de licencia y luego clic en Finish.
 - nivel de password medio y colocar 'y' en los siguientes comandos.
 - sudo mysql
 - create database user
-- CREATE USER 'dev'@'localhost' IDENTIFIED BY 'Mksgiwg#ZotA6';
+- CREATE USER 'dev'@'localhost' IDENTIFIED BY 'Mksgiwg#ZotA6'; (creamos un user con permisos para acceder a la BD)
 - GRANT ALL PRIVILEGES ON user.* TO 'dev'@'localhost';
 - FLUSH PRIVILEGES;
 - exit
