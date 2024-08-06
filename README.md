@@ -43,6 +43,12 @@ aceptar los términos de licencia y luego clic en Finish.
 - En caso de no ver la opcion Spring Boot App, seleccionar Run As > Run Configuration, seleccionar spring y por ultimo Run.
 - Ingresar http://localhost:8080/login
 
+### Correr el proyecto con Maven
+- Navegar a la carpeta del proyecto clonado:
+  ```bash
+  cd Mentoria101-Springboot
+  mvn clean package
+  mvn spring-boot:run
 
 
 
