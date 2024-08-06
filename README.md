@@ -20,7 +20,7 @@ aceptar los términos de licencia y luego clic en Finish.
 - Reiniciar eclipse.
 
 ### Instalación Insomnia
--Descargar [Insomnia](https://insomnia.rest/download).
+- Descargar [Insomnia](https://insomnia.rest/download).
 - Importar archivo json de la carpeta clonada.
 
 ### Instalación mysql
